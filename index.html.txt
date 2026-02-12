@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anish Giri | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="logo">Anish Giri</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Welcome to my portfolio</h1>
+      <h2>Final Year IT Student | Aspiring Software Developer</h2>
+      <p>
+        Passionate about building elegant solutions and creating meaningful digital experiences.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn primary">Get in Touch</a>
+        <a href="#projects" class="btn secondary">View Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me -->
+  <section class="section" id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a final year Information Technology student with a passion for software development and creating impactful digital solutions.
+      My journey in tech started with curiosity about how things work and has evolved into a strong commitment to building user-friendly applications.
+    </p>
+    <p>
+      Throughout my academic journey, I’ve developed a solid foundation in programming, database management, and web development.
+      I’m particularly interested in full-stack development and emerging technologies.
+    </p>
+    <p>
+      When I’m not coding, I enjoy exploring new technologies, contributing to open-source projects, and mentoring fellow students.
+    </p>
+
+    <div class="strengths">
+      <h3>Core Strengths</h3>
+      <ul>
+        <li><strong>Clean</strong> Code: Writing maintainable and scalable solutions</li>
+        <li><strong>Problem</strong> Solver: Tackling complex challenges creatively</li>
+        <li><strong>Team</strong> Player: Collaborating effectively in diverse teams</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Skills & Technologies -->
+  <section class="section" id="skills">
+    <h2>Skills & Technologies</h2>
+
+    <div class="skills-grid">
+      <div class="skills-category">
+        <h3>Languages</h3>
+        <ul>
+          <li>JavaScript</li>
+          <li>TypeScript</li>
+          <li>Python</li>
+          <li>Java</li>
+          <li>C++</li>
+          <li>SQL</li>
+        </ul>
+      </div>
+
+      <div class="skills-category">
+        <h3>Frontend</h3>
+        <ul>
+          <li>React</li>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>Tailwind CSS</li>
+          <li>Bootstrap</li>
+          <li>Next.js</li>
+        </ul>
+      </div>
+
+      <div class="skills-category">
+        <h3>Backend</h3>
+        <ul>
+          <li>Node.js</li>
+          <li>Express.js</li>
+          <li>REST APIs</li>
+          <li>MongoDB</li>
+          <li>PostgreSQL</li>
+          <li>MySQL</li>
+        </ul>
+      </div>
+
+      <div class="skills-category">
+        <h3>Tools & Others</h3>
+        <ul>
+          <li>Git & GitHub</li>
+          <li>VS Code</li>
+          <li>Docker</li>
+          <li>Linux</li>
+          <li>Figma</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" id="projects">
+    <h2>Projects</h2>
+    <p class="placeholder">
+      Projects will be added soon.
+    </p>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education">
+    <h2>Education</h2>
+
+    <div class="edu-item">
+      <h3>Bachelor of Information Technology</h3>
+      <p class="edu-meta">2024 – 2026 · Crown Institute of Higher Education</p>
+      <p>
+        Specializing in Software Development with coursework in Data Structures, Web Development, and Networking.
+      </p>
+    </div>
+
+    <div class="edu-item">
+      <h3>Diploma & Advanced Diploma of Information Technology</h3>
+      <p class="edu-meta">2022 – 2024 · Queensford College, Parramatta, Sydney, NSW</p>
+      <p>
+        Focused on Web Development and Networking fundamentals. Overall Score: 95%.
+      </p>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section" id="certifications">
+    <h2>Certifications</h2>
+    <ul class="cert-list">
+      <li>Google IT Support</li>
+      <li>AWS Cloud Practitioner</li>
+      <li>IBM Data Science</li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <h2>Contact</h2>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <p><strong>Email:</strong> <a href="mailto:anishgiri915@gmail.com">anishgiri915@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+61414720977">+61 414 720 977</a></p>
+        <p><strong>Location:</strong> Sydney, Australia</p>
+      </div>
+
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for your message!');">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input id="name" type="text" placeholder="Your name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="your@email.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input id="subject" type="text" placeholder="Subject" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" placeholder="Your message" required></textarea>
+        </div>
+
+        <button type="submit" class="btn primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 Anish Giri. All rights reserved.</p>
+  </footer>
+</body>
+</html>
