@@ -249,26 +249,39 @@ body {
 
 .social-links {
   display: flex;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
+  gap: 1rem;
+  margin-top: 0.75rem;
 }
 
 .social-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  background-color: #111827;
-  color: #f9fafb;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   text-decoration: none;
-  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+/* LinkedIn - Official blue */
+.social-icon:nth-child(1) {
+  background: linear-gradient(135deg, #0a66c2, #0077b5);
+  color: white;
+}
+
+/* Instagram - Official gradient */
+.social-icon:nth-child(2) {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
 }
 
 .social-icon:hover {
-  background-color: #1f2937;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
+
 
 .hero-profile {
   display: flex;
@@ -284,5 +297,6 @@ body {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   object-fit: cover;
 }
+
 
 
