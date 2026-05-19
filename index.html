@@ -152,6 +152,56 @@
     .project-link:hover { background: rgba(0,212,255,0.1); }
     .project-coming { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; color: var(--muted); border: 1px solid var(--border); padding: 8px 16px; border-radius: 4px; align-self: flex-start; }
 
+    /* ── WORK EXPERIENCE ── */
+    .work-list { display: flex; flex-direction: column; gap: 20px; }
+    .work-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .work-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 3px; height: 60%;
+      background: var(--green);
+      border-radius: 0 3px 3px 0;
+    }
+    .work-item:hover { border-color: rgba(0,255,136,0.35); transform: translateY(-2px); }
+    .work-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
+    .work-title-group {}
+    .work-role { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .work-company { font-size: 14px; color: var(--accent); font-family: var(--mono); }
+    .work-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+    .work-period {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--muted); letter-spacing: 0.05em;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 10px;
+    }
+    .work-location { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+    .work-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .work-bullets li {
+      display: flex; gap: 12px;
+      font-size: 14px; color: var(--muted); line-height: 1.65;
+    }
+    .work-bullets li::before {
+      content: '▸';
+      color: var(--green);
+      font-size: 12px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .work-bullets li strong { color: var(--text); }
+    .work-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .work-tag { font-family: var(--mono); font-size: 10px; padding: 3px 9px; border-radius: 3px; background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.2); color: var(--green); }
+
     /* ── CERTIFICATIONS ── */
     .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .cert-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px; display: flex; align-items: center; gap: 20px; text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
@@ -197,35 +247,11 @@
       border-radius: 12px;
       padding: 36px;
     }
-    .contact-form-wrap h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .contact-form-wrap > p {
-      color: var(--muted);
-      font-size: 13.5px;
-      margin-bottom: 28px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 14px;
-    }
-    .form-group label {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+    .contact-form-wrap h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .contact-form-wrap > p { color: var(--muted); font-size: 13.5px; margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-group label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     .form-group input,
     .form-group textarea {
       background: var(--surface2);
@@ -240,62 +266,30 @@
       width: 100%;
     }
     .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: var(--muted);
-      opacity: 0.6;
-    }
+    .form-group textarea::placeholder { color: var(--muted); opacity: 0.6; }
     .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: rgba(0,212,255,0.5);
-      box-shadow: 0 0 0 3px rgba(0,212,255,0.08);
-    }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 110px;
-    }
+    .form-group textarea:focus { border-color: rgba(0,212,255,0.5); box-shadow: 0 0 0 3px rgba(0,212,255,0.08); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
     .btn-submit {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 24px;
-      background: var(--accent);
-      color: var(--bg);
-      font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 700;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: opacity 0.2s, transform 0.2s;
-      margin-top: 6px;
+      width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 24px; background: var(--accent); color: var(--bg);
+      font-family: var(--mono); font-size: 13px; font-weight: 700;
+      border: none; border-radius: 6px; cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s; margin-top: 6px;
     }
     .btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
     .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 24px;
-      background: rgba(0,255,136,0.06);
-      border: 1px solid rgba(0,255,136,0.25);
-      border-radius: 8px;
-      margin-top: 16px;
-    }
+    .form-success { display: none; text-align: center; padding: 24px; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.25); border-radius: 8px; margin-top: 16px; }
     .form-success.show { display: block; }
     .form-success i { font-size: 28px; color: var(--green); margin-bottom: 10px; display: block; }
     .form-success p { font-size: 14px; color: var(--text); margin: 0; }
     .form-success span { font-size: 12px; color: var(--muted); font-family: var(--mono); }
 
-    /* resume download strip inside form area */
     .resume-strip {
       display: flex; align-items: center; justify-content: space-between;
-      gap: 16px;
-      background: rgba(0,212,255,0.05);
-      border: 1px solid rgba(0,212,255,0.2);
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin-top: 20px;
+      gap: 16px; background: rgba(0,212,255,0.05);
+      border: 1px solid rgba(0,212,255,0.2); border-radius: 8px;
+      padding: 14px 18px; margin-top: 20px;
     }
     .resume-file { display: flex; align-items: center; gap: 12px; }
     .resume-file-icon { font-size: 18px; color: var(--accent); }
@@ -318,6 +312,8 @@
       .navbar { padding: 0 20px; }
       .nav-links { display: none; }
       .form-row { grid-template-columns: 1fr; }
+      .work-header { flex-direction: column; }
+      .work-meta { align-items: flex-start; }
     }
     @media (max-width: 600px) {
       .container { padding: 0 16px; }
@@ -335,13 +331,14 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#certifications">Certs</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <a href="Anish_Giri_IT_Support_Resume.docx" download class="nav-resume-btn">
+    <a href="Anish_Giri_Resume_IT_support.pdf" download class="nav-resume-btn">
       <i class="fa-solid fa-download"></i> Resume
     </a>
   </header>
@@ -355,8 +352,8 @@
           <h1>Anish<br><span>Giri</span></h1>
           <p class="hero-role">// IT Support Specialist &nbsp;·&nbsp; Google IT Support Certified &nbsp;·&nbsp; Microsoft 365</p>
           <p class="hero-desc">
-            IT graduate with hands-on experience in network troubleshooting, Windows environments, 
-            Active Directory, and user support. Currently learning Microsoft 365 Business administration 
+            IT graduate with hands-on experience in network troubleshooting, Windows environments,
+            Active Directory, and user support. Currently learning Microsoft 365 Business administration
             and FreshService ticketing. Based in Sydney, seeking Level 1 IT Support roles.
           </p>
           <div class="hero-tags">
@@ -369,7 +366,7 @@
           </div>
           <div class="hero-buttons">
             <a href="#contact" class="btn-primary"><i class="fa-solid fa-envelope"></i> Get in Touch</a>
-            <a href="Anish_Giri_IT_Support_Resume.docx" download class="btn-secondary"><i class="fa-solid fa-download"></i> Download Resume</a>
+            <a href="Anish_Giri_Resume_IT_support.pdf" download class="btn-secondary"><i class="fa-solid fa-download"></i> Download Resume</a>
           </div>
         </div>
 
@@ -402,14 +399,14 @@
             is IT support and making sure users' problems get solved fast.
           </p>
           <p>
-            I hold the <strong>Google IT Support Professional Certificate</strong> and the 
-            <strong>Microsoft 365 Fundamentals</strong> certificate. I'm currently building 
-            hands-on experience with <strong>Microsoft 365 Business administration</strong> and 
+            I hold the <strong>Google IT Support Professional Certificate</strong> and the
+            <strong>Microsoft 365 Fundamentals</strong> certificate. I'm currently building
+            hands-on experience with <strong>Microsoft 365 Business administration</strong> and
             <strong>FreshService</strong> as a ticketing system — both tools used daily in real helpdesk roles.
           </p>
           <p>
-            I've supported real users in a volunteer capacity — setting up devices, troubleshooting 
-            connectivity issues, and explaining technical steps clearly to non-technical people. 
+            I've supported real users in a volunteer capacity — setting up devices, troubleshooting
+            connectivity issues, and explaining technical steps clearly to non-technical people.
             That's the kind of work I want to do professionally.
           </p>
         </div>
@@ -431,7 +428,7 @@
             <div class="about-stat-label">Based in NSW, AU</div>
           </div>
           <div class="about-highlight">
-            🎯 Currently targeting Level 1 IT Support roles in Sydney. 
+            🎯 Currently targeting Level 1 IT Support roles in Sydney.
             Open to hybrid and on-site positions.
           </div>
         </div>
@@ -540,6 +537,44 @@
     </div>
   </section>
 
+  <!-- WORK EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="container">
+      <p class="section-label fade-in">Work Experience</p>
+      <h2 class="section-title fade-in">Where I've Worked</h2>
+      <div class="work-list fade-in">
+
+        <div class="work-item">
+          <div class="work-header">
+            <div class="work-title-group">
+              <div class="work-role">IT Support Intern</div>
+              <div class="work-company"><i class="fa-solid fa-building" style="font-size:11px; margin-right:6px; opacity:0.7;"></i>Newa IT Solutions — Sydney, Australia</div>
+            </div>
+            <div class="work-meta">
+              <span class="work-period">March 2025 – March 2026</span>
+              <span class="work-location"><i class="fa-solid fa-location-dot" style="font-size:10px; margin-right:4px;"></i>Sydney, NSW</span>
+            </div>
+          </div>
+          <ul class="work-bullets">
+            <li>Provided <strong>Level 1 technical support</strong> to end users, diagnosing and resolving hardware, software, and connectivity issues in a timely manner under the supervision of the Director / IT Head.</li>
+            <li>Assisted with <strong>setup, configuration, and maintenance</strong> of workstations, peripherals, and network equipment across the company environment.</li>
+            <li>Supported <strong>user account management</strong> tasks including Active Directory and Microsoft 365 administration — creating, modifying, and deactivating accounts as required.</li>
+            <li>Communicated effectively with <strong>non-technical users</strong>, explaining solutions clearly and ensuring a positive, professional support experience.</li>
+          </ul>
+          <div class="work-tags">
+            <span class="work-tag">Level 1 Support</span>
+            <span class="work-tag">Active Directory</span>
+            <span class="work-tag">Microsoft 365</span>
+            <span class="work-tag">Hardware Setup</span>
+            <span class="work-tag">Network Equipment</span>
+            <span class="work-tag">User Communication</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- PROJECTS -->
   <section class="section" id="projects">
     <div class="container">
@@ -553,8 +588,8 @@
             <p class="project-cat orange-label">// Network Troubleshooting</p>
             <h3 class="project-title">Static Routing &amp; WAN Fault Diagnosis</h3>
             <p class="project-desc">
-              Multi-site WAN simulation — diagnosed and fixed a live connectivity failure caused by a 
-              miscabled interface, and identified missing return routes by reading the routing table. 
+              Multi-site WAN simulation — diagnosed and fixed a live connectivity failure caused by a
+              miscabled interface, and identified missing return routes by reading the routing table.
               Restored full end-to-end connectivity across 6 subnets.
             </p>
             <div class="project-tags">
@@ -573,8 +608,8 @@
             <p class="project-cat">// Enterprise Network Design</p>
             <h3 class="project-title">EIGRP Multi-Site WAN Network</h3>
             <p class="project-desc">
-              Designed and built a 3-site corporate WAN with dynamic EIGRP routing — 
-              automatic route convergence across all sites verified with Cisco IOS show commands 
+              Designed and built a 3-site corporate WAN with dynamic EIGRP routing —
+              automatic route convergence across all sites verified with Cisco IOS show commands
               and end-to-end ping tests.
             </p>
             <div class="project-tags">
@@ -593,8 +628,8 @@
             <p class="project-cat green-label">// Redundancy &amp; Failover</p>
             <h3 class="project-title">HSRP Gateway Redundancy</h3>
             <p class="project-desc">
-              Implemented dual-router failover using HSRP — if the primary router fails, 
-              end users automatically switch to the backup with zero manual intervention. 
+              Implemented dual-router failover using HSRP — if the primary router fails,
+              end users automatically switch to the backup with zero manual intervention.
               Live state transitions observed and verified.
             </p>
             <div class="project-tags">
@@ -613,7 +648,7 @@
             <p class="project-cat muted-label">// Coming Soon</p>
             <h3 class="project-title">Microsoft 365 Business Admin</h3>
             <p class="project-desc">
-              Hands-on M365 admin project — user provisioning, licence management, 
+              Hands-on M365 admin project — user provisioning, licence management,
               SharePoint setup, and Teams administration in a simulated business environment.
             </p>
             <div class="project-tags">
@@ -631,7 +666,7 @@
             <p class="project-cat muted-label">// Coming Soon</p>
             <h3 class="project-title">FreshService Helpdesk Simulation</h3>
             <p class="project-desc">
-              Ticketing system workflow simulation — incident creation, SLA management, 
+              Ticketing system workflow simulation — incident creation, SLA management,
               ticket categorisation, escalation paths, and resolution documentation.
             </p>
             <div class="project-tags">
@@ -742,7 +777,7 @@
         <!-- LEFT: contact details -->
         <div class="contact-info">
           <h3>Let's talk about IT Support</h3>
-          <p>Looking for Level 1 IT Support opportunities in Sydney. Reach out via the form, email, or LinkedIn.</p>
+          <p>Currently Looking for opportunities to enhance my skills in the IT Support and Networking Field. Reach out via the form, email, or LinkedIn.</p>
 
           <div class="contact-item">
             <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
@@ -809,7 +844,6 @@
             </button>
           </form>
 
-          <!-- Success message -->
           <div class="form-success" id="formSuccess">
             <i class="fa-solid fa-circle-check"></i>
             <p>Message sent successfully!</p>
@@ -819,13 +853,13 @@
           <!-- Resume download strip -->
           <div class="resume-strip">
             <div class="resume-file">
-              <i class="fa-solid fa-file-word resume-file-icon"></i>
+              <i class="fa-solid fa-file-pdf resume-file-icon"></i>
               <div>
-                <div class="resume-file-name">Anish_Giri_IT_Support_Resume.docx</div>
+                <div class="resume-file-name">Anish_Giri_Resume_IT_support.pdf</div>
                 <div class="resume-file-size">IT Support L1 · Updated 2026</div>
               </div>
             </div>
-            <a href="Anish_Giri_IT_Support_Resume.docx" download class="btn-download">
+            <a href="Anish_Giri_Resume_IT_support.pdf" download class="btn-download">
               <i class="fa-solid fa-download"></i> Download CV
             </a>
           </div>
@@ -870,7 +904,7 @@
     }, { threshold: 0.1 });
     faders.forEach(f => fadeObs.observe(f));
 
-    // Contact form — AJAX submit so page doesn't redirect
+    // Contact form — AJAX submit
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('formSuccess');
