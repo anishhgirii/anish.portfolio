@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft 365 Administration — Shared Mailboxes, SharePoint & Resource Mailboxes</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#0f4c81;--blue-mid:#1a6fc4;--blue-light:#e8f1fb;--blue-border:#c5d9f2;
+  --green:#107c41;--green-light:#e8f5ee;--green-border:#a8d5b8;
+  --purple:#5b21b6;--purple-light:#ede9fe;--purple-border:#c4b5fd;
+  --red-light:#fdecea;--red:#c0392b;
+  --gray-50:#f8f9fa;--gray-100:#f1f3f4;--gray-200:#e8eaed;--gray-400:#9aa0a6;
+  --gray-600:#5f6368;--gray-700:#3c4043;--gray-900:#1a1c1e;
+}
+body{font-family:'DM Sans',sans-serif;background:#eef0f3;color:var(--gray-900);line-height:1.6;font-size:15px}
+
+/* HERO */
+.hero{background:var(--blue);color:#fff;padding:60px 48px 52px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.hero::after{content:'';position:absolute;bottom:-80px;left:25%;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.03)}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);padding:5px 14px;border-radius:20px;margin-bottom:24px;color:rgba(255,255,255,0.9)}
+.hero h1{font-family:'DM Serif Display',serif;font-size:50px;line-height:1.08;font-weight:400;margin-bottom:16px}
+.hero h1 em{font-style:italic;color:#90c4f9}
+.hero-sub{font-size:17px;color:rgba(255,255,255,0.7);max-width:620px;margin-bottom:40px;font-weight:300;line-height:1.6}
+.hero-pills{display:flex;gap:12px;flex-wrap:wrap}
+.hero-pill{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:8px 16px;display:flex;flex-direction:column;gap:1px}
+.hero-pill span:first-child{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.45);font-weight:500}
+.hero-pill span:last-child{font-size:14px;font-weight:500;color:#fff}
+
+/* WRAP */
+.wrap{max-width:900px;margin:0 auto;padding:48px 24px 64px}
+
+/* SKILLS */
+.skills-row{background:#fff;border-radius:14px;border:1px solid var(--gray-200);padding:22px 28px;margin-bottom:44px}
+.skills-row h3{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray-400);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;background:var(--blue-light);color:var(--blue);border:1px solid var(--blue-border)}
+.chip.green{background:var(--green-light);color:var(--green);border-color:var(--green-border)}
+.chip.purple{background:var(--purple-light);color:var(--purple);border-color:var(--purple-border)}
+
+/* SECTION HEADER */
+.section-hdr{display:flex;align-items:flex-start;gap:18px;margin-bottom:10px}
+.section-num{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;flex-shrink:0}
+.section-num.blue{background:var(--blue)}
+.section-num.green{background:var(--green)}
+.section-num.purple{background:var(--purple)}
+.section-hdr-text h2{font-family:'DM Serif Display',serif;font-size:30px;font-weight:400;line-height:1.1;margin-bottom:3px}
+.section-hdr-text h2.blue{color:var(--blue)}
+.section-hdr-text h2.green{color:var(--green)}
+.section-hdr-text h2.purple{color:var(--purple)}
+.section-hdr-text p{font-size:13px;color:var(--gray-400);font-family:'DM Sans',sans-serif}
+.section-desc{font-size:15px;color:var(--gray-600);line-height:1.7;margin:18px 0 28px;max-width:780px}
+
+/* WHAT WAS DONE GRID */
+.done-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:32px}
+.done-card{background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
+.done-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.done-icon.blue{background:var(--blue-light)}
+.done-icon.green{background:var(--green-light)}
+.done-icon.purple{background:var(--purple-light)}
+.done-card strong{font-size:12px;font-weight:600;color:var(--gray-900);display:block;margin-bottom:2px;line-height:1.3}
+.done-card p{font-size:12px;color:var(--gray-600);line-height:1.45}
+
+/* SCREENSHOTS */
+.ss-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray-400);margin:28px 0 14px}
+.ss-grid{display:grid;gap:16px}
+.ss-grid.col2{grid-template-columns:1fr 1fr}
+.ss-grid.col3{grid-template-columns:1fr 1fr 1fr}
+.ss-grid.col1{grid-template-columns:1fr}
+.ss-card{background:#fff;border:1px solid var(--gray-200);border-radius:12px;overflow:hidden}
+.ss-card img{width:100%;display:block;border-bottom:1px solid var(--gray-200)}
+.ss-foot{padding:12px 16px;display:flex;align-items:center;gap:9px}
+.badge{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.badge.ok{background:var(--green-light);color:var(--green)}
+.badge.info{background:var(--blue-light);color:var(--blue)}
+.badge.blocked{background:var(--red-light);color:var(--red)}
+.badge.member{background:#fff3e0;color:#e65100}
+.badge.purple{background:var(--purple-light);color:var(--purple)}
+.ss-foot p{font-size:12px;color:var(--gray-600);line-height:1.4}
+
+/* TAKEAWAY */
+.takeaway{border-radius:14px;padding:28px 32px;margin-top:8px}
+.takeaway.blue{background:var(--blue);color:#fff}
+.takeaway.green{background:var(--green);color:#fff}
+.takeaway.purple{background:var(--purple);color:#fff}
+.takeaway h3{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;margin-bottom:12px}
+.takeaway ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.takeaway ul li{font-size:13px;padding-left:18px;position:relative;color:rgba(255,255,255,0.85);line-height:1.5}
+.takeaway ul li::before{content:'→';position:absolute;left:0;color:rgba(255,255,255,0.5);font-weight:600}
+
+/* DIVIDER */
+.divider{border:none;border-top:2px dashed var(--gray-200);margin:52px 0}
+
+/* FOOTER */
+footer{background:#fff;border-top:1px solid var(--gray-200);padding:24px 48px;font-size:12px;color:var(--gray-400);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer .footer-left{line-height:1.6}
+.btn-all-projects{display:inline-flex;align-items:center;gap:8px;background:#0ff4c0;color:#0a0a0a;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;padding:10px 22px;border-radius:8px;text-decoration:none;letter-spacing:.2px;transition:opacity .2s}
+.btn-all-projects:hover{opacity:.85}
+
+@media(max-width:700px){
+  .hero{padding:36px 20px}
+  .hero h1{font-size:32px}
+  .done-grid{grid-template-columns:1fr 1fr}
+  .ss-grid.col2,.ss-grid.col3{grid-template-columns:1fr}
+  .hero-pills{gap:8px}
+  footer{padding:20px 24px;flex-direction:column;align-items:flex-start;gap:14px}
+}
+@media(max-width:480px){.done-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Microsoft 365 Administration Lab</div>
+    <h1>Shared Mailboxes, SharePoint<br>&amp; <em>Resource Mailboxes</em></h1>
+    <p class="hero-sub">End-to-end configuration of collaborative email infrastructure, SharePoint team sites with permission tiers, and room resource mailboxes — simulating a real-world IT department environment on a live M365 tenant.</p>
+    <div class="hero-pills">
+      <div class="hero-pill"><span>Platform</span><span>Microsoft 365 / Exchange Online</span></div>
+      <div class="hero-pill"><span>Tenant</span><span>IntelX800.onmicrosoft.com</span></div>
+      <div class="hero-pill"><span>Completed</span><span>May 2026</span></div>
+      <div class="hero-pill"><span>Level</span><span>Intermediate</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="skills-row">
+    <h3>Skills Demonstrated</h3>
+    <div class="chips">
+      <span class="chip">Shared Mailboxes</span>
+      <span class="chip">Exchange Admin Center</span>
+      <span class="chip">Outlook Web Access</span>
+      <span class="chip">Multi-account Management</span>
+      <span class="chip green">SharePoint Online</span>
+      <span class="chip green">Site Permissions</span>
+      <span class="chip green">Document Libraries</span>
+      <span class="chip green">Folder-level Access Control</span>
+      <span class="chip green">External Sharing</span>
+      <span class="chip purple">Resource Mailboxes</span>
+      <span class="chip purple">Room Booking</span>
+      <span class="chip purple">Calendar Management</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 1 — SHARED MAILBOXES
+  ═══════════════════════════════════ -->
+  <div class="section-hdr">
+    <div class="section-num blue">1</div>
+    <div class="section-hdr-text">
+      <h2 class="blue">Shared Mailbox — Support HelpDesk</h2>
+      <p>Microsoft 365 Admin Center → Teams &amp; Groups → Shared mailboxes</p>
+    </div>
+  </div>
+
+  <p class="section-desc">Created and configured a shared mailbox at <strong>support@anish.website</strong> to simulate a real IT support team inbox. Added David Wilson and Sarah Smith as members, then validated end-to-end functionality — sending emails from the shared address and confirming receipt in a user inbox — all without requiring a dedicated licence for the mailbox itself.</p>
+
+  <div class="done-grid">
+    <div class="done-card"><div class="done-icon blue">📬</div><div><strong>Shared Mailbox Created</strong><p>support@anish.website provisioned in Microsoft 365 Admin Center under Shared mailboxes.</p></div></div>
+    <div class="done-card"><div class="done-icon blue">👥</div><div><strong>Members Added</strong><p>David Wilson and Sarah Smith granted Send As and full access permissions to the mailbox.</p></div></div>
+    <div class="done-card"><div class="done-icon blue">✉️</div><div><strong>Send &amp; Receive Tested</strong><p>Test email sent from support@anish.website via Sarah Smith's account; received in David Wilson's inbox.</p></div></div>
+    <div class="done-card"><div class="done-icon blue">🔄</div><div><strong>Multi-account Access</strong><p>Opened shared mailbox inside Outlook alongside personal account — demonstrated parallel mailbox management.</p></div></div>
+    <div class="done-card"><div class="done-icon blue">📋</div><div><strong>Sent Items Verified</strong><p>Confirmed sent email appears in Support HelpDesk Sent Items folder, not the sender's personal account.</p></div></div>
+    <div class="done-card"><div class="done-icon blue">🏷️</div><div><strong>No Licence Required</strong><p>Shared mailbox operates without an assigned licence — cost-efficient for team email scenarios.</p></div></div>
+  </div>
+
+  <p class="ss-label">Screenshots — Shared Mailbox Setup &amp; Testing</p>
+  <div class="ss-grid col2">
+    <div class="ss-card">
+      <img src="1779876544900_Screenshot__301_.png" alt="Shared mailbox created in Microsoft 365 Admin Center">
+      <div class="ss-foot"><span class="badge ok">Created ✓</span><p>Shared mailbox "Support HelpDesk" (support@anish.website) successfully created — next steps shown for adding members and managing settings</p></div>
+    </div>
+    <div class="ss-card">
+      <img src="1779876544905_Screenshot__305_.png" alt="Shared mailbox members — David Wilson and Sarah Smith">
+      <div class="ss-foot"><span class="badge ok">Saved ✓</span><p>David Wilson and Sarah Smith added as shared mailbox members — both can send and receive on behalf of support@anish.website</p></div>
+    </div>
+  </div>
+
+  <div class="ss-grid col2" style="margin-top:16px">
+    <div class="ss-card">
+      <img src="1779876544904_Screenshot__311_.png" alt="Support HelpDesk sent items — test email to David Wilson">
+      <div class="ss-foot"><span class="badge info">Sent From</span><p>Test email sent from Support HelpDesk shared mailbox to David Wilson — appears in the shared mailbox Sent Items, not in the sender's personal account</p></div>
+    </div>
+    <div class="ss-card">
+      <img src="1779876544904_Screenshot__312_.png" alt="David Wilson inbox — received email from Support HelpDesk">
+      <div class="ss-foot"><span class="badge ok">Received ✓</span><p>David Wilson's inbox confirms receipt of the test email from Support HelpDesk — end-to-end shared mailbox flow validated</p></div>
+    </div>
+  </div>
+
+  <div class="ss-grid col1" style="margin-top:16px">
+    <div class="ss-card">
+      <img src="1779876544905_Screenshot__302_.png" alt="David Wilson Outlook with multiple accounts — IntelX, CIHE, Queensford">
+      <div class="ss-foot"><span class="badge member">Multi-account</span><p>David Wilson's Outlook profile showing multiple linked accounts (IntelX800, CIHE Australia, Queensford College) — demonstrates real-world multi-tenant identity management in a single client</p></div>
+    </div>
+  </div>
+
+  <div class="takeaway blue" style="margin-top:32px">
+    <h3>Key Takeaway — Shared Mailboxes</h3>
+    <ul>
+      <li>Shared mailboxes allow multiple users to manage a single email address without purchasing an additional licence — ideal for support teams and department inboxes</li>
+      <li>Members with "Send As" permission send emails that appear from the shared address, not their personal account — keeping communications professional and consistent</li>
+      <li>Sent Items are stored in the shared mailbox folder, giving the whole team visibility of outgoing correspondence</li>
+      <li>Testing via two separate Outlook sessions (shared mailbox + recipient) is the correct approach to verify full send-and-receive functionality</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══════════════════════════════════
+       SECTION 2 — RESOURCE MAILBOXES
+  ═══════════════════════════════════ -->
+  <div class="section-hdr">
+    <div class="section-num purple">2</div>
+    <div class="section-hdr-text">
+      <h2 class="purple">Resource Mailbox — Room Booking</h2>
+      <p>Exchange Admin Center → Recipients → Resources</p>
+    </div>
+  </div>
+
+  <p class="section-desc">Created a Room resource mailbox (Board Room) via the Exchange Admin Center to enable calendar-based meeting room bookings. Configured auto-accept booking options, then tested the full workflow — booking the room from David Wilson's Outlook calendar and verifying the room's acceptance confirmation reply.</p>
+
+  <div class="done-grid">
+    <div class="done-card"><div class="done-icon purple">🏢</div><div><strong>Room Resource Created</strong><p>Board Room mailbox (boardroom@anish.website) provisioned in Exchange Admin Center with booking options configured.</p></div></div>
+    <div class="done-card"><div class="done-icon purple">📅</div><div><strong>Calendar Booking Tested</strong><p>Created a "Team Meeting" event from David Wilson's Outlook calendar, inviting the Board Room as a resource.</p></div></div>
+    <div class="done-card"><div class="done-icon purple">✅</div><div><strong>Auto-Accept Confirmed</strong><p>Board Room sent an automatic acceptance reply — David Wilson's calendar updated with confirmed room booking.</p></div></div>
+  </div>
+
+  <p class="ss-label">Screenshots — Resource Mailbox &amp; Room Booking</p>
+  <div class="ss-grid col2">
+    <div class="ss-card">
+      <img src="1779876544903_Screenshot__319_.png" alt="Exchange Admin Center — resource mailbox creation successful">
+      <div class="ss-foot"><span class="badge ok">Created ✓</span><p>Exchange Admin Center confirms "Resource mailbox creation successful!" after completing all four setup steps: Resource Setup, General Information, Booking options, and Review</p></div>
+    </div>
+    <div class="ss-card">
+      <img src="1779876544904_Screenshot__316_.png" alt="Outlook calendar — new Team Meeting event with Board Room resource">
+      <div class="ss-foot"><span class="badge purple">Booking</span><p>New event created with Board Room (boardroom@anish.website) added as a resource — availability shows as "Available" for the 7:00–7:30 PM slot</p></div>
+    </div>
+  </div>
+
+  <div class="ss-grid col1" style="margin-top:16px">
+    <div class="ss-card">
+      <img src="1779876544903_Screenshot__321_.png" alt="David Wilson inbox — Board Room accepted the Team Meeting booking">
+      <div class="ss-foot"><span class="badge ok">Accepted ✓</span><p>David Wilson's inbox shows "Board Room accepted" — the Team Meeting is confirmed on both the user's calendar and the room's calendar for Wed 27 May, 7:00–7:30 PM</p></div>
+    </div>
+  </div>
+
+  <div class="takeaway purple" style="margin-top:32px">
+    <h3>Key Takeaway — Resource Mailboxes</h3>
+    <ul>
+      <li>Resource mailboxes (Rooms &amp; Equipment) allow physical spaces and assets to be booked directly through Outlook — no manual coordination required</li>
+      <li>The auto-accept feature means the room responds instantly when available, streamlining meeting scheduling across the organisation</li>
+      <li>Room bookings appear on both the attendee's calendar and the resource mailbox calendar, providing a single source of truth for facility management</li>
+      <li>Resource mailboxes are managed through Exchange Admin Center and do not require separate user licences</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══════════════════════════════════
+       SECTION 3 — SHAREPOINT SITE
+  ═══════════════════════════════════ -->
+  <div class="section-hdr">
+    <div class="section-num green">3</div>
+    <div class="section-hdr-text">
+      <h2 class="green">SharePoint Site — IT Team Department</h2>
+      <p>SharePoint Admin Center → Active sites → IT Internal Department</p>
+    </div>
+  </div>
+
+  <p class="section-desc">Provisioned a private SharePoint team site ("IT Internal Department") for the IT team's internal file storage. Configured a three-tier permission model (Members, Owners, Visitors), created a confidential document library folder with unique restricted permissions, uploaded an IT policy document, and tested external document sharing — all through SharePoint's modern permission management interface.</p>
+
+  <div class="done-grid">
+    <div class="done-card"><div class="done-icon green">🌐</div><div><strong>Site Provisioned</strong><p>IT Internal Department SharePoint site created as a private group from SharePoint Admin Center.</p></div></div>
+    <div class="done-card"><div class="done-icon green">🔐</div><div><strong>Permission Groups Configured</strong><p>Three-tier model: Members (Edit), Owners (Full Control), Visitors (Read) applied at the site level.</p></div></div>
+    <div class="done-card"><div class="done-icon green">📁</div><div><strong>Confidential Folder Created</strong><p>"Confidential – HR only" folder created with unique permissions breaking inheritance from the site.</p></div></div>
+    <div class="done-card"><div class="done-icon green">📄</div><div><strong>Document Uploaded</strong><p>IT policy.docx uploaded to the Documents library and made available to site members.</p></div></div>
+    <div class="done-card"><div class="done-icon green">🔗</div><div><strong>External Sharing Tested</strong><p>IT policy.docx shared with an external Gmail account — sharing invitation confirmed.</p></div></div>
+    <div class="done-card"><div class="done-icon green">👤</div><div><strong>Member Management</strong><p>Users assigned to SharePoint groups (Sarah Smith as Member, David Wilson as Visitor) via the Permissions panel.</p></div></div>
+  </div>
+
+  <p class="ss-label">Screenshots — SharePoint Site &amp; Permission Configuration</p>
+  <div class="ss-grid col1">
+    <div class="ss-card">
+      <img src="1779876544903_Screenshot__328_.png" alt="SharePoint Admin Center — IT Internal Department site details">
+      <div class="ss-foot"><span class="badge ok">Provisioned ✓</span><p>SharePoint Admin Center showing IT Internal Department site details — private group with primary email ITInternalDepartment@anish.website, created 27 May 2026</p></div>
+    </div>
+  </div>
+
+  <div class="ss-grid col2" style="margin-top:16px">
+    <div class="ss-card">
+      <img src="1779876544902_Screenshot__333_.png" alt="SharePoint site permissions — Members, Owners, Visitors groups">
+      <div class="ss-foot"><span class="badge info">Permissions</span><p>Site-level permissions panel showing three SharePoint groups: IT Team Department Members (Edit), IT Team Department Owners (Full Control), IT Team Department Visitors (Read)</p></div>
+    </div>
+    <div class="ss-card">
+      <img src="1779876544902_Screenshot__332_.png" alt="SharePoint People and Groups — IT Team Department Owners">
+      <div class="ss-foot"><span class="badge info">Groups</span><p>Classic SharePoint permissions view showing IT Team Department Owners group — demonstrating the three-group structure (Members, Visitors, Owners) in the left navigation</p></div>
+    </div>
+  </div>
+
+  <div class="ss-grid col2" style="margin-top:16px">
+    <div class="ss-card">
+      <img src="1779876544902_Screenshot__334_.png" alt="SharePoint Documents library with Confidential HR folder and permissions panel">
+      <div class="ss-foot"><span class="badge member">Restricted</span><p>Documents library showing "Confidential – HR only" folder, with the Permissions panel open — Sarah Smith (Edit) and David Wilson (Read) assigned as site members</p></div>
+    </div>
+    <div class="ss-card">
+      <img src="1779876544901_Screenshot__336_.png" alt="SharePoint folder unique permissions — broken inheritance">
+      <div class="ss-foot"><span class="badge member">Unique Permissions</span><p>Confidential folder shows "This folder has unique permissions" — inheritance broken from the parent site, applying a separate access control list for HR-sensitive content</p></div>
+    </div>
+  </div>
+
+  <div class="ss-grid col1" style="margin-top:16px">
+    <div class="ss-card">
+      <img src="1779876544901_Screenshot__339_.png" alt="SharePoint — IT policy.docx shared with external Gmail account">
+      <div class="ss-foot"><span class="badge ok">Shared ✓</span><p>IT policy.docx shared externally — confirmation dialog shows anishhgirii@gmail.com has been invited to view the document, demonstrating SharePoint's external sharing capability</p></div>
+    </div>
+  </div>
+
+  <div class="takeaway green" style="margin-top:32px">
+    <h3>Key Takeaway — SharePoint Permissions &amp; Document Management</h3>
+    <ul>
+      <li>SharePoint's three-group model (Members/Owners/Visitors) maps directly to Edit, Full Control, and Read access — implementing least-privilege principles at the site level</li>
+      <li>Breaking permission inheritance on a folder allows sensitive content (e.g. HR documents) to have a completely separate access control list, invisible to general site members</li>
+      <li>External sharing can be scoped to individual files or folders — administrators control whether links are view-only, editable, or require sign-in</li>
+      <li>SharePoint integrates natively with Microsoft 365 Groups, Teams, and Exchange — a site provisioned from the SharePoint Admin Center automatically creates a corresponding group email and Teams channel</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-left">
+    <strong>Anish Giri</strong> &nbsp;·&nbsp; Microsoft 365 Administration Lab &nbsp;·&nbsp; IntelX800 Tenant<br>
+    Part of IT administration portfolio — pursuing Microsoft certifications
+  </div>
+  <a href="index.html" class="btn-all-projects">← All Projects</a>
+</footer>
+
+</body>
+</html>
