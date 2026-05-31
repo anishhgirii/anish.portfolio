@@ -543,16 +543,135 @@
     .cursor-dot{position:fixed;pointer-events:none;z-index:9999;width:6px;height:6px;border-radius:50%;background:var(--accent);transition:transform 0.1s;mix-blend-mode:screen;}
     [data-theme="light"] .cursor-dot{mix-blend-mode:multiply;}
 
-    /* ===== RESPONSIVE ===== */
-    @media(max-width:900px){
-      .hero-inner{grid-template-columns:1fr;}.hero-photo-wrap{display:none;}
-      .about-grid,.contact-grid{grid-template-columns:1fr;}
-      .skills-grid{grid-template-columns:1fr;}.projects-grid{grid-template-columns:1fr;}
-      .cert-grid{grid-template-columns:1fr;}.navbar{padding:0 20px;}.nav-links{display:none;}
-      .form-row{grid-template-columns:1fr;}.work-header{flex-direction:column;}.work-meta{align-items:flex-start;}
-      .ai-chat-panel{width:calc(100vw - 48px);}
+    /* ===== HAMBURGER MENU ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      z-index: 201;
     }
-    @media(max-width:600px){.container{padding:0 16px;}.section{padding:70px 0;}}
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s, background var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0; right: 0;
+      background: var(--navbar-bg);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px 24px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 4px;
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .mobile-nav.open {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .mobile-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+      display: block;
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav a:hover, .mobile-nav a.active { color: var(--accent); }
+    .mobile-nav .mobile-resume {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 12px 20px;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 6px;
+      text-decoration: none;
+      justify-content: center;
+      border-bottom: none !important;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .navbar { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo-wrap { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .work-header { flex-direction: column; }
+      .work-meta { align-items: flex-start; }
+      .ai-chat-panel { width: calc(100vw - 48px); }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+      .section { padding: 64px 0; }
+      .navbar { padding: 0 16px; height: 58px; }
+      .logo { font-size: 15px; }
+      .hero { padding: 80px 0 60px; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-desc { font-size: 14.5px; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons a { justify-content: center; }
+      .btn-primary, .btn-secondary { padding: 13px 20px; font-size: 12px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .about-stat-grid { grid-template-columns: 1fr 1fr; }
+      .section-title { font-size: 1.7rem; margin-bottom: 32px; }
+      .work-item { padding: 22px 18px; }
+      .work-role { font-size: 16px; }
+      .cert-card { padding: 18px; gap: 14px; }
+      .cert-logo { width: 40px; height: 40px; font-size: 18px; }
+      .contact-form-wrap { padding: 24px 18px; }
+      .contact-social { flex-wrap: wrap; }
+      .ai-chat-panel { width: calc(100vw - 32px); left: 16px; bottom: 96px; }
+      .ai-fab { left: 16px; bottom: 24px; }
+      .scroll-top { right: 16px; bottom: 24px; }
+      .nav-resume-btn { display: none; }
+      .resume-strip { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .btn-download { width: 100%; justify-content: center; }
+      .hero-badge { font-size: 11px; padding: 6px 12px; flex-wrap: wrap; }
+      .mobile-nav { top: 58px; }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 2rem; }
+      .about-stat-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -580,8 +699,23 @@
       <a href="Anish_Giri_Resume_IT%20support.pdf" download class="nav-resume-btn">
         <i class="fa-solid fa-download"></i> Resume
       </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#skills" class="mobile-link">Skills</a>
+    <a href="#experience" class="mobile-link">Experience</a>
+    <a href="#projects" class="mobile-link">Projects</a>
+    <a href="#certifications" class="mobile-link">Certs</a>
+    <a href="#education" class="mobile-link">Education</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="Anish_Giri_Resume_IT%20support.pdf" download class="mobile-resume"><i class="fa-solid fa-download"></i> Download Resume</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero" id="home">
@@ -872,6 +1006,21 @@
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
 
   <script>
+    /* HAMBURGER MENU */
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+    // Close on link click
+    document.querySelectorAll('.mobile-link').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+      });
+    });
+
     /* THEME */
     const html = document.documentElement;
     const saved = localStorage.getItem('theme') || 'dark';
