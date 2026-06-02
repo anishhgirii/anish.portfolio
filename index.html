@@ -992,8 +992,10 @@
     </div>
     <div class="chat-suggestions" id="chatSuggestions">
       <button class="chat-suggestion" data-q="What are Anish's top skills?">Top skills</button>
-      <button class="chat-suggestion" data-q="Tell me about Anish's work experience">Work experience</button>
-      <button class="chat-suggestion" data-q="What projects has Anish built?">Projects</button>
+      <button class="chat-suggestion" data-q="Tell me about Anish's work experience">Experience</button>
+      <button class="chat-suggestion" data-q="What are Anish's hobbies?">Hobbies</button>
+      <button class="chat-suggestion" data-q="Is Anish a quick learner and open to new things?">Learning mindset</button>
+      <button class="chat-suggestion" data-q="How are Anish's communication skills?">Communication</button>
       <button class="chat-suggestion" data-q="Is Anish available for hire?">Availability</button>
     </div>
     <div class="ai-chat-input-row">
@@ -1089,7 +1091,7 @@
       } catch { sb.disabled = false; sb.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message'; alert('Network error. Email anishgiri915@gmail.com directly.'); }
     });
 
-    /* AI CHAT */
+    /* AI CHAT — Powered by Anthropic API */
     const fabBtn = document.getElementById('aiFabBtn');
     const panel = document.getElementById('aiChatPanel');
     const closeBtn = document.getElementById('aiChatClose');
@@ -1101,42 +1103,156 @@
     fabBtn.addEventListener('click', () => panel.classList.toggle('open'));
     closeBtn.addEventListener('click', () => panel.classList.remove('open'));
 
-    const KB = {
-      skills: "Anish's top skills: Windows 10/11 & Server 2019, Active Directory, Microsoft 365 admin, Azure & AWS basics, TCP/IP networking, DNS/DHCP, Cisco IOS CLI, FreshService ticketing, Python, and SQL.",
-      experience: "Anish did an IT Support Internship at Newa IT Solutions in Sydney (March 2025 – March 2026) — Level 1 helpdesk, Active Directory & M365 account management, workstation setup, hardware & network troubleshooting.",
-      projects: "5 hands-on projects: Static Routing WAN fault diagnosis, EIGRP multi-site WAN design, HSRP gateway redundancy failover, M365 Groups & RBAC on a live tenant, and Shared Mailboxes & SharePoint setup.",
-      availability: "Yes! Anish is actively looking for IT Support Engineer roles in Sydney, NSW. Open to hybrid and on-site. Contact: anishgiri915@gmail.com or +61 414 720 977.",
-      certifications: "Certificates: Google IT Support Professional (Coursera), Microsoft 365 Fundamentals (LinkedIn Learning), Python 101 for Data Science (IBM/Cognitive Class), Python for Data Science Badge (IBM/Credly).",
-      education: "Bachelor of IT at CIHE Australia (graduating June 2026). Advanced Diploma from Queensford College (95% score). Diploma of IT from Queensford College.",
-      contact: "Email: anishgiri915@gmail.com | Phone: +61 414 720 977 | Location: Penshurst, NSW 2222, Sydney | LinkedIn: linkedin.com/in/anish-giri-1b8530228",
-      default: "I can tell you about Anish's skills, experience, projects, certifications, education, or availability. What would you like to know?"
-    };
-    function getResp(q) {
-      const l = q.toLowerCase();
-      if (/skill|know|tech/.test(l)) return KB.skills;
-      if (/experience|work|job|intern/.test(l)) return KB.experience;
-      if (/project|built|portfolio/.test(l)) return KB.projects;
-      if (/avail|hire|looking|open/.test(l)) return KB.availability;
-      if (/cert|google|microsoft|ibm/.test(l)) return KB.certifications;
-      if (/edu|degree|study|uni|college/.test(l)) return KB.education;
-      if (/contact|email|phone|reach/.test(l)) return KB.contact;
-      if (/network|cisco|routing/.test(l)) return "Anish has solid networking skills: TCP/IP, subnetting, DNS/DHCP, VLANs, Cisco IOS CLI, Wireshark. He's built static routing, EIGRP WAN, and HSRP failover projects in Packet Tracer.";
-      if (/365|azure|sharepoint|teams/.test(l)) return "Anish has hands-on M365 experience: Admin portal, Azure AD/Entra ID, SharePoint, Exchange Online, Teams administration, RBAC, shared mailboxes — all tested on a live tenant.";
-      return KB.default;
+    // ── Full knowledge base about Anish ──────────────────────────────────────
+    const ANISH_SYSTEM_PROMPT = `You are Anish Giri's personal AI assistant embedded on his portfolio website (anish.website).
+Your job is to answer questions about Anish in a friendly, professional, and accurate way — as if you know him personally.
+Keep answers concise (2–4 sentences max) unless the question requires more detail. Never make things up; if unsure, say so.
+
+=== PROFESSIONAL PROFILE ===
+- Full name: Anish Giri
+- Role: IT Support Engineer / IT Graduate
+- Location: Penshurst, NSW 2222, Sydney, Australia
+- Email: anishgiri915@gmail.com | Phone: +61 414 720 977
+- LinkedIn: linkedin.com/in/anish-giri-1b8530228
+- Status: Actively looking for IT Support Engineer roles in Sydney. Open to hybrid and on-site.
+
+=== EDUCATION ===
+- Bachelor of IT at CIHE Australia (graduating June 2026)
+- Advanced Diploma of IT from Queensford College — 95% overall score
+- Diploma of IT from Queensford College
+
+=== CERTIFICATIONS ===
+- Google IT Support Professional Certificate (Coursera)
+- Microsoft 365 Fundamentals (LinkedIn Learning)
+- Python 101 for Data Science (IBM / Cognitive Class)
+- Python for Data Science Badge (IBM / Credly)
+
+=== WORK EXPERIENCE ===
+- IT Support Intern at Newa IT Solutions, Sydney (March 2025 – March 2026)
+  • Level 1 helpdesk support (hardware, software, network issues)
+  • Active Directory & Microsoft 365 user account management
+  • Workstation and peripheral setup & configuration
+  • Communicated technical solutions clearly to non-technical users
+
+=== TECHNICAL SKILLS ===
+- OS: Windows 10/11, Windows Server 2019, Basic Linux (Ubuntu)
+- Cloud & M365: Microsoft 365 Business, Azure Fundamentals, AWS Basics, SharePoint, Teams Admin, Exchange Online, RBAC, Entra ID
+- Networking: TCP/IP, Subnetting, DNS/DHCP, VLANs, NAT/PAT, Cisco IOS CLI, Wireshark, Wi-Fi troubleshooting
+- IT Support: FreshService ticketing, hardware troubleshooting, device setup, Active Directory
+- Dev/Scripting: Python, SQL/MySQL, JavaScript, HTML/CSS, Git/GitHub
+- Tools: Cisco Packet Tracer 8.2, Oracle VirtualBox, Figma, VS Code
+
+=== PROJECTS (5 completed) ===
+1. Static Routing & WAN Fault Diagnosis — diagnosed live connectivity failure in multi-site WAN simulation (Cisco Packet Tracer, 4 routers)
+2. EIGRP Multi-Site WAN Network — designed 3-site corporate WAN with dynamic EIGRP routing and automatic route convergence
+3. HSRP Gateway Redundancy — dual-router failover with zero manual intervention when primary fails
+4. M365 Groups, Teams & Access Control (RBAC) — Security Groups, Distribution Lists, M365 Groups with Teams workspaces, live permission boundary testing on real M365 tenant
+5. Shared Mailboxes, SharePoint & Resource Mailboxes — end-to-end email infrastructure, SharePoint team sites with permission tiers, room mailboxes on a live tenant
+6. FreshService Helpdesk Simulation — in progress (ITIL, SLA management, incident escalation)
+
+=== HOBBIES & PERSONAL INTERESTS ===
+- Loves playing football and going to the gym regularly
+- Enjoys running and outdoor activities like hiking
+- Passionate about travel and exploring new places
+- Always curious about new technology and keeps up with the latest trends in IT
+
+=== COMMUNICATION & PERSONALITY ===
+- Communication style: calm, confident, and friendly
+- Fluent in English (professional level) — main language is Nepali, can also interact in Hindi
+- Known for explaining technical issues clearly to non-technical people
+- Approachable, patient, and easy to talk to
+
+=== LEARNING & GROWTH MINDSET ===
+- Describes himself as a "desperate" (passionate) and quick learner
+- Primarily self-taught through hands-on practice — learns best by actually doing things
+- Also uses YouTube and online resources to supplement learning
+- Always eager to pick up new technologies and tools on the job
+- Stays updated with the latest developments in IT and cloud technologies
+
+=== CAREER GOALS & MOTIVATION ===
+- In 2–3 years, aims to reach a senior/advanced level in his IT career through consistent hard work
+- Deeply motivated by problem-solving — loves figuring out why something broke and fixing it
+- Motivated by helping people — finds satisfaction in resolving users' issues
+- Long-term goal: grow into a well-rounded IT professional with expertise in cloud, networking, and support
+
+=== WORK STYLE & TEAMWORK ===
+- Prefers working in a team — collaboration is his priority
+- Also capable of independent work when needed
+- When facing a stressful situation (e.g., system outage or difficult user): stays calm, understands the problem first, tries to solve it himself, and if stuck, escalates to seniors for help
+- Not reactive under pressure — methodical and composed
+
+=== HOW TO ANSWER ===
+- Always refer to Anish in third person (he/him) unless it's a direct quote
+- Be warm and positive but stay factual
+- If asked something not covered above, politely say you don't have that detail and suggest contacting Anish directly at anishgiri915@gmail.com
+- Never claim Anish has skills or experience not listed above`;
+
+    // conversation history for multi-turn context
+    const chatHistory = [];
+
+    function addMsg(text, type) {
+      const d = document.createElement('div');
+      d.className = 'chat-msg ' + type;
+      const b = document.createElement('div');
+      b.className = 'chat-bubble';
+      b.textContent = text;
+      d.appendChild(b);
+      msgs.appendChild(d);
+      msgs.scrollTop = msgs.scrollHeight;
     }
-    function addMsg(t, type) {
-      const d = document.createElement('div'); d.className = 'chat-msg ' + type;
-      const b = document.createElement('div'); b.className = 'chat-bubble'; b.textContent = t;
-      d.appendChild(b); msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
+
+    function addTyping() {
+      const td = document.createElement('div');
+      td.className = 'chat-typing';
+      td.id = 'chatTyping';
+      td.innerHTML = '<span></span><span></span><span></span>';
+      msgs.appendChild(td);
+      msgs.scrollTop = msgs.scrollHeight;
     }
-    function sendQ(q) {
+
+    function removeTyping() {
+      const t = document.getElementById('chatTyping');
+      if (t) t.remove();
+    }
+
+    async function sendQ(q) {
       if (!q.trim()) return;
-      addMsg(q, 'user'); suggs.style.display = 'none';
-      const td = document.createElement('div'); td.className = 'chat-typing'; td.id = 'typ';
-      td.innerHTML = '<span></span><span></span><span></span>'; msgs.appendChild(td); msgs.scrollTop = msgs.scrollHeight;
-      setTimeout(() => { const t = document.getElementById('typ'); if (t) t.remove(); addMsg(getResp(q), 'bot'); }, 800 + Math.random() * 500);
       inp.value = '';
+      suggs.style.display = 'none';
+      addMsg(q, 'user');
+      chatHistory.push({ role: 'user', content: q });
+      sendBtn.disabled = true;
+      inp.disabled = true;
+      addTyping();
+
+      try {
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-20250514',
+            max_tokens: 1000,
+            system: ANISH_SYSTEM_PROMPT,
+            messages: chatHistory
+          })
+        });
+
+        const data = await response.json();
+        removeTyping();
+
+        const reply = data?.content?.[0]?.text || "Sorry, I couldn't get a response right now. You can reach Anish directly at anishgiri915@gmail.com.";
+        chatHistory.push({ role: 'assistant', content: reply });
+        addMsg(reply, 'bot');
+      } catch (err) {
+        removeTyping();
+        addMsg("Hmm, there was a connection issue. You can reach Anish directly at anishgiri915@gmail.com or +61 414 720 977.", 'bot');
+      } finally {
+        sendBtn.disabled = false;
+        inp.disabled = false;
+        inp.focus();
+      }
     }
+
     sendBtn.addEventListener('click', () => sendQ(inp.value));
     inp.addEventListener('keydown', e => { if (e.key === 'Enter') sendQ(inp.value); });
     document.querySelectorAll('.chat-suggestion').forEach(b => b.addEventListener('click', () => sendQ(b.getAttribute('data-q'))));
