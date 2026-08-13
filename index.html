@@ -241,6 +241,16 @@
     .edu-school{font-size:14px;color:var(--muted);margin-bottom:8px;}
     .edu-score{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);background:rgba(0,255,136,0.07);border:1px solid rgba(0,255,136,0.2);padding:3px 10px;border-radius:3px;}
 
+    /* ===== REFERENCES ===== */
+    .ref-list{display:flex;flex-direction:column;gap:16px;}
+    .ref-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px 28px;display:flex;align-items:center;gap:18px;position:relative;transition:border-color 0.2s,background var(--transition),transform 0.3s;}
+    .ref-item::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:60%;background:#a78bfa;border-radius:0 3px 3px 0;}
+    .ref-item:hover{border-color:rgba(124,58,237,0.35);transform:translateX(4px);}
+    .ref-icon{width:44px;height:44px;border-radius:10px;background:rgba(124,58,237,0.1);color:#a78bfa;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+    .ref-name{font-size:15.5px;font-weight:700;margin-bottom:3px;}
+    .ref-role{font-size:12.5px;color:var(--muted);margin-bottom:6px;}
+    .ref-contact{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);}
+
     /* ===== CONTACT ===== */
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
     .contact-info h3{font-size:20px;font-weight:700;margin-bottom:8px;}
@@ -421,6 +431,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#certifications">Certs</a></li>
         <li><a href="#education">Education</a></li>
+        <li><a href="#references">References</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -429,7 +440,7 @@
         <i class="fa-solid fa-moon icon-moon"></i>
         <i class="fa-solid fa-sun icon-sun"></i>
       </button>
-      <a href="AnishGiri_Resume..pdf" download class="nav-resume-btn">
+      <a href="AnishGiri_Resume_.pdf" download class="nav-resume-btn">
         <i class="fa-solid fa-download"></i> Resume
       </a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -446,8 +457,9 @@
     <a href="#projects" class="mobile-link">Projects</a>
     <a href="#certifications" class="mobile-link">Certs</a>
     <a href="#education" class="mobile-link">Education</a>
+    <a href="#references" class="mobile-link">References</a>
     <a href="#contact" class="mobile-link">Contact</a>
-    <a href="AnishGiri_Resume..pdf" download class="mobile-resume"><i class="fa-solid fa-download"></i> Download Resume</a>
+    <a href="AnishGiri_Resume_.pdf" download class="mobile-resume"><i class="fa-solid fa-download"></i> Download Resume</a>
   </div>
 
   <!-- HERO -->
@@ -462,7 +474,7 @@
           </div>
           <h1>Anish<br><span>Giri</span></h1>
           <p class="hero-role">// <span id="typedRole"></span></p>
-          <p class="hero-desc">IT graduate with hands-on experience in network troubleshooting, Windows environments, Active Directory, and user support. Skilled in Microsoft 365 Business administration, email security, and FreshService ticketing. Based in Sydney, seeking IT Support Engineer roles.</p>
+          <p class="hero-desc">Recently graduated with a Bachelor of Information Technology, holding Google IT Support Professional and Microsoft 365 Fundamentals certifications. Experienced in Microsoft 365 administration, Active Directory, email security, and end-user support across Windows environments. Skilled at diagnosing and resolving hardware, software, and network issues with a structured, user-focused approach. Currently seeking an IT Support Engineer role across Australia.</p>
           <div class="hero-tags">
             <span class="tag hot">Google IT Support ✓</span>
             <span class="tag hot">Microsoft 365 ✓</span>
@@ -475,7 +487,7 @@
           </div>
           <div class="hero-buttons">
             <a href="#contact" class="btn-primary"><i class="fa-solid fa-envelope"></i> Get in Touch</a>
-            <a href="AnishGiri_Resume..pdf" download class="btn-secondary"><i class="fa-solid fa-download"></i> Download Resume</a>
+            <a href="AnishGiri_Resume_.pdf" download class="btn-secondary"><i class="fa-solid fa-download"></i> Download Resume</a>
           </div>
         </div>
         <div class="hero-photo-wrap">
@@ -510,13 +522,13 @@
       <h2 class="section-title reveal">IT Graduate, <br>Focused on IT Support Engineer</h2>
       <div class="about-grid">
         <div class="about-text reveal-left">
-          <p>I recently completed my Bachelor of Information Technology at <strong>CIHE Australia</strong>, graduated in June 2026, with an Advanced Diploma from Queensford College where I achieved an overall score of <strong>95%</strong>. My foundation spans networking, Windows Server, and systems administration.</p>
-          <p>I hold the <strong>Google IT Support Professional Certificate</strong> and the <strong>Microsoft 365 Fundamentals</strong> certificate. I am actively building hands-on experience with <strong>Microsoft 365 Business administration</strong> including email security, identity protection, MFA enforcement, and FreshService as a ticketing platform.</p>
-          <p>I have supported real users in a volunteer capacity, assisting with device setup, troubleshooting connectivity issues, and communicating technical solutions clearly to non-technical people.</p>
+          <p>I recently completed my Bachelor of Information Technology at <strong>CIHE Australia</strong>, graduated in June 2026, with an Advanced Diploma from Queensford College. My foundation spans networking, Windows Server, and systems administration.</p>
+          <p>I hold the <strong>Google IT Support Professional Certificate</strong> and the <strong>Microsoft 365 Fundamentals</strong> certificate. I have hands-on experience with <strong>Microsoft 365 administration</strong> — including Exchange Online, Teams, SharePoint and license management — plus Active Directory, email security, and FreshService as a ticketing platform.</p>
+          <p>As an IT Support Intern at Newa IT Solutions, I've resolved hardware, software, and network issues for real end users, and I'm skilled at translating technical solutions into clear, non-technical language.</p>
         </div>
         <div class="about-stat-grid reveal-right">
-          <div class="about-stat stagger-child"><span class="about-stat-num">95%</span><div class="about-stat-label">Advanced Diploma Score</div></div>
-          <div class="about-stat stagger-child"><span class="about-stat-num">4</span><div class="about-stat-label">Industry Certifications</div></div>
+          <div class="about-stat stagger-child"><span class="about-stat-num">1+</span><div class="about-stat-label">Year IT Support Experience</div></div>
+          <div class="about-stat stagger-child"><span class="about-stat-num">3</span><div class="about-stat-label">Industry Certifications</div></div>
           <div class="about-stat stagger-child"><span class="about-stat-num">6</span><div class="about-stat-label">Hands-On Projects</div></div>
           <div class="about-stat stagger-child"><span class="about-stat-num">Sydney</span><div class="about-stat-label">Based in NSW, AU</div></div>
           <div class="about-highlight stagger-child">🎯 Currently targeting IT Support Engineer roles all over Australia. Open to hybrid and on-site positions.</div>
@@ -531,11 +543,11 @@
       <p class="section-label reveal">Technical Skills</p>
       <h2 class="section-title reveal">What I Work With</h2>
       <div class="skills-grid">
-        <div class="skill-card stagger-child"><div class="skill-card-header"><div class="skill-icon blue"><i class="fa-brands fa-windows"></i></div><h3>OS &amp; Desktop Support</h3></div><div class="skill-tags"><span class="skill-tag primary">Windows 10 / 11</span><span class="skill-tag primary">Windows Server 2019</span><span class="skill-tag primary">Active Directory</span><span class="skill-tag">User Account Management</span><span class="skill-tag">Remote Desktop (RDP)</span><span class="skill-tag">Basic Linux (Ubuntu)</span></div></div>
-        <div class="skill-card stagger-child"><div class="skill-card-header"><div class="skill-icon ms"><i class="fa-brands fa-microsoft"></i></div><h3>Cloud &amp; Microsoft 365</h3></div><div class="skill-tags"><span class="skill-tag primary">Microsoft 365 Business</span><span class="skill-tag primary">Azure Fundamentals</span><span class="skill-tag primary">AWS Basics</span><span class="skill-tag">M365 Admin</span><span class="skill-tag">SharePoint</span><span class="skill-tag">Teams Administration</span><span class="skill-tag">Exchange Online</span><span class="skill-tag">Entra ID / Azure AD</span></div></div>
-        <div class="skill-card stagger-child"><div class="skill-card-header"><div class="skill-icon red"><i class="fa-solid fa-shield-halved"></i></div><h3>Email Security &amp; Identity</h3></div><div class="skill-tags"><span class="skill-tag primary">Mail Flow Rules</span><span class="skill-tag primary">Anti-Spam Policies</span><span class="skill-tag primary">MFA Enforcement</span><span class="skill-tag primary">Microsoft Secure Score</span><span class="skill-tag">Microsoft Defender</span><span class="skill-tag">Quarantine Management</span><span class="skill-tag">Password Protection</span><span class="skill-tag">Message Trace</span></div></div>
-        <div class="skill-card stagger-child"><div class="skill-card-header"><div class="skill-icon green"><i class="fa-solid fa-headset"></i></div><h3>IT Support &amp; Helpdesk</h3></div><div class="skill-tags"><span class="skill-tag primary">FreshService (Learning)</span><span class="skill-tag primary">Ticketing Systems</span><span class="skill-tag">Hardware Troubleshooting</span><span class="skill-tag">Device Setup &amp; Config</span><span class="skill-tag">Printer &amp; Peripheral Support</span><span class="skill-tag">User Communication</span></div></div>
-        <div class="skill-card stagger-child"><div class="skill-card-header"><div class="skill-icon orange"><i class="fa-solid fa-network-wired"></i></div><h3>Networking Fundamentals</h3></div><div class="skill-tags"><span class="skill-tag primary">TCP/IP &amp; Subnetting</span><span class="skill-tag primary">DNS &amp; DHCP</span><span class="skill-tag">VLANs &amp; NAT/PAT</span><span class="skill-tag">Wi-Fi Troubleshooting</span><span class="skill-tag">Cisco IOS CLI</span><span class="skill-tag">Wireshark</span></div></div>
+        <div class="skill-card stagger-child"><div class="skill-card-header"><div class="skill-icon blue"><i class="fa-brands fa-windows"></i></div><h3>OS &amp; Desktop</h3></div><div class="skill-tags"><span class="skill-tag primary">Windows 10 / 11</span><span class="skill-tag primary">Windows Server 2019</span><span class="skill-tag primary">Active Directory</span><span class="skill-tag">Remote Desktop (RDP)</span><span class="skill-tag">Basic Linux (Ubuntu)</span></div></div>
+        <div class="skill-card stagger-child"><div class="skill-card-header"><div class="skill-icon ms"><i class="fa-brands fa-microsoft"></i></div><h3>Microsoft 365</h3></div><div class="skill-tags"><span class="skill-tag primary">M365 Admin Center</span><span class="skill-tag primary">Exchange Online</span><span class="skill-tag primary">SharePoint</span><span class="skill-tag">Teams</span><span class="skill-tag">Entra ID / Azure AD</span><span class="skill-tag">Shared Mailboxes</span><span class="skill-tag">RBAC</span><span class="skill-tag">MFA Enforcement</span></div></div>
+        <div class="skill-card stagger-child"><div class="skill-card-header"><div class="skill-icon red"><i class="fa-solid fa-shield-halved"></i></div><h3>Email Security</h3></div><div class="skill-tags"><span class="skill-tag primary">Mail Flow Rules</span><span class="skill-tag primary">Anti-Spam Policies</span><span class="skill-tag primary">Microsoft Defender</span><span class="skill-tag primary">Secure Score</span><span class="skill-tag">Quarantine Management</span><span class="skill-tag">Message Trace</span></div></div>
+        <div class="skill-card stagger-child"><div class="skill-card-header"><div class="skill-icon green"><i class="fa-solid fa-headset"></i></div><h3>IT Support &amp; Helpdesk</h3></div><div class="skill-tags"><span class="skill-tag primary">FreshService Ticketing</span><span class="skill-tag primary">Hardware Setup &amp; Troubleshooting</span><span class="skill-tag">Device Configuration</span><span class="skill-tag">Printer &amp; Peripheral Support</span></div></div>
+        <div class="skill-card stagger-child"><div class="skill-card-header"><div class="skill-icon orange"><i class="fa-solid fa-network-wired"></i></div><h3>Networking</h3></div><div class="skill-tags"><span class="skill-tag primary">TCP/IP</span><span class="skill-tag primary">DNS &amp; DHCP</span><span class="skill-tag primary">Subnetting</span><span class="skill-tag">VLANs &amp; NAT/PAT</span><span class="skill-tag">Wi-Fi Troubleshooting</span><span class="skill-tag">Cisco IOS CLI</span><span class="skill-tag">Wireshark</span></div></div>
         <div class="skill-card stagger-child"><div class="skill-card-header"><div class="skill-icon purple"><i class="fa-solid fa-code"></i></div><h3>Dev &amp; Scripting</h3></div><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">SQL / MySQL</span><span class="skill-tag">JavaScript</span><span class="skill-tag">HTML / CSS</span><span class="skill-tag">Git &amp; GitHub</span><span class="skill-tag">VS Code</span></div></div>
       </div>
     </div>
@@ -550,15 +562,17 @@
         <div class="work-item reveal">
           <div class="work-header">
             <div><div class="work-role">IT Support Intern</div><div class="work-company"><i class="fa-solid fa-building" style="font-size:11px;margin-right:6px;opacity:0.7;"></i>Newa IT Solutions — Sydney, Australia</div></div>
-            <div class="work-meta"><span class="work-period">March 2025 – Ongoing</span><span class="work-location"><i class="fa-solid fa-location-dot" style="font-size:10px;margin-right:4px;"></i>Sydney, NSW</span></div>
+            <div class="work-meta"><span class="work-period">Mar 2025 – Ongoing</span><span class="work-location"><i class="fa-solid fa-location-dot" style="font-size:10px;margin-right:4px;"></i>Sydney, NSW</span></div>
           </div>
           <ul class="work-bullets">
-            <li>Provided Level 1 support, such as resolved hardware, software, and network issues for end users.</li>
-            <li>Set up and maintained workstations, peripherals, and network equipment.</li>
-            <li>Managed user accounts in Active Directory and Microsoft 365.</li>
-            <li>Communicated technical solutions clearly to non-technical users.</li>
+            <li>Resolved hardware, software, and network issues for end users, maintaining and extending relationships.</li>
+            <li>Managed Active Directory user accounts, including provisioning, password resets, and group membership updates.</li>
+            <li>Administered Microsoft 365 environment, covering Exchange Online, Teams, SharePoint, and license management.</li>
+            <li>Configured and maintained workstations, peripherals, and network equipment from initial setup.</li>
+            <li>Logged and tracked support requests via FreshService, ensuring timely resolution within SLA targets.</li>
+            <li>Translated technical solutions into clear, non-technical language, ensuring a positive end-user experience.</li>
           </ul>
-          <div class="work-tags"><span class="work-tag">Level 1 Support</span><span class="work-tag">Active Directory</span><span class="work-tag">Microsoft 365</span><span class="work-tag">Hardware Setup</span><span class="work-tag">Network Equipment</span><span class="work-tag">User Communication</span></div>
+          <div class="work-tags"><span class="work-tag">Level 1 Support</span><span class="work-tag">Active Directory</span><span class="work-tag">Microsoft 365</span><span class="work-tag">Exchange Online</span><span class="work-tag">FreshService</span><span class="work-tag">SLA Management</span><span class="work-tag">Hardware Setup</span><span class="work-tag">User Communication</span></div>
         </div>
       </div>
     </div>
@@ -571,11 +585,10 @@
       <h2 class="section-title reveal">Hands-On Work</h2>
       <div class="projects-grid">
         <div class="project-card stagger-child"><div class="project-card-top orange"></div><div class="project-body"><p class="project-cat orange-label">// Network Troubleshooting</p><h3 class="project-title">Static Routing &amp; WAN Fault Diagnosis</h3><p class="project-desc">Multi-site WAN simulation — diagnosed and fixed a live connectivity failure caused by a miscabled interface, and identified missing return routes by reading the routing table.</p><div class="project-tags"><span class="project-tag">Cisco Packet Tracer</span><span class="project-tag">Static Routing</span><span class="project-tag">Fault Isolation</span><span class="project-tag">4 Routers</span></div><a href="static-routing-project.html" class="project-link">View Project →</a></div></div>
-        <div class="project-card stagger-child"><div class="project-card-top"></div><div class="project-body"><p class="project-cat">// Enterprise Network Design</p><h3 class="project-title">EIGRP Multi-Site WAN Network</h3><p class="project-desc">Designed and built a 3-site corporate WAN with dynamic EIGRP routing — automatic route convergence across all sites verified with Cisco IOS show commands.</p><div class="project-tags"><span class="project-tag">EIGRP</span><span class="project-tag">WAN Design</span><span class="project-tag">Cisco IOS</span><span class="project-tag">3 Routers</span></div><a href="eigrp-project.html" class="project-link">View Project →</a></div></div>
+        <div class="project-card stagger-child"><div class="project-card-top"></div><div class="project-body"><p class="project-cat">// Enterprise Network Design</p><h3 class="project-title">EIGRP Multi-Site WAN Network</h3><p class="project-desc">Built a 3-site corporate WAN with dynamic EIGRP routing and verified convergence via Cisco IOS — automatic route convergence across all sites confirmed with Cisco IOS show commands.</p><div class="project-tags"><span class="project-tag">EIGRP</span><span class="project-tag">WAN Design</span><span class="project-tag">Cisco IOS</span><span class="project-tag">3 Routers</span></div><a href="eigrp-project.html" class="project-link">View Project →</a></div></div>
         <div class="project-card stagger-child"><div class="project-card-top green"></div><div class="project-body"><p class="project-cat green-label">// Redundancy &amp; Failover</p><h3 class="project-title">HSRP Gateway Redundancy</h3><p class="project-desc">Implemented dual-router failover using HSRP — if the primary router fails, end users automatically switch to the backup with zero manual intervention.</p><div class="project-tags"><span class="project-tag">HSRP</span><span class="project-tag">Gateway Redundancy</span><span class="project-tag">Failover</span><span class="project-tag">Cisco 2811</span></div><a href="hsrp-project.html" class="project-link">View Project →</a></div></div>
         <div class="project-card stagger-child"><div class="project-card-top ms"></div><div class="project-body"><p class="project-cat ms-label">// Microsoft 365 Administration</p><h3 class="project-title">Groups, Teams &amp; Access Control</h3><p class="project-desc">Configured Security Groups, Distribution Lists, and Microsoft 365 Groups with linked Teams workspaces. Implemented RBAC with live permission boundary testing.</p><div class="project-tags"><span class="project-tag">Microsoft 365</span><span class="project-tag">Azure AD</span><span class="project-tag">RBAC</span><span class="project-tag">Entra ID</span><span class="project-tag">Teams</span></div><a href="m365_portfolio_projects_3_4.html" class="project-link">View Project →</a></div></div>
-        <div class="project-card stagger-child"><div class="project-card-top ms"></div><div class="project-body"><p class="project-cat ms-label">// Microsoft 365 Administration</p><h3 class="project-title">Shared Mailboxes, SharePoint &amp; Resource Mailboxes</h3><p class="project-desc">End-to-end configuration of collaborative email infrastructure, SharePoint team sites with permission tiers, and room resource mailboxes on a live M365 tenant.</p><div class="project-tags"><span class="project-tag">Exchange Online</span><span class="project-tag">SharePoint</span><span class="project-tag">Shared Mailboxes</span><span class="project-tag">Resource Mailboxes</span></div><a href="m365_portfolio_project_5_FINAL.html" class="project-link">View Project →</a></div></div>
-        <!-- PROJECT 7 — NEW -->
+        <div class="project-card stagger-child"><div class="project-card-top ms"></div><div class="project-body"><p class="project-cat ms-label">// Microsoft 365 Administration</p><h3 class="project-title">Shared Mailboxes, SharePoint &amp; Resource Mailboxes</h3><p class="project-desc">Configured collaborative email infrastructure with tiered SharePoint permissions and resource mailboxes, end-to-end on a live M365 tenant.</p><div class="project-tags"><span class="project-tag">Exchange Online</span><span class="project-tag">SharePoint</span><span class="project-tag">Shared Mailboxes</span><span class="project-tag">Resource Mailboxes</span></div><a href="m365_portfolio_project_5_FINAL.html" class="project-link">View Project →</a></div></div>
         <div class="project-card stagger-child"><div class="project-card-top red"></div><div class="project-body"><p class="project-cat red-label">// Email Security &amp; Identity</p><h3 class="project-title">Email Security &amp; Identity Protection</h3><p class="project-desc">Hardened a live M365 tenant with mail flow rules, anti-spam policies, per-user MFA enforcement, and Microsoft Secure Score — simulating real-world security operations for an IT department.</p><div class="project-tags"><span class="project-tag">Mail Flow Rules</span><span class="project-tag">Anti-Spam</span><span class="project-tag">MFA</span><span class="project-tag">Entra ID</span><span class="project-tag">Secure Score</span><span class="project-tag">Defender</span></div><a href="m365_portfolio_project_7.html" class="project-link">View Project →</a></div></div>
       </div>
     </div>
@@ -589,8 +602,7 @@
       <div class="cert-grid">
         <a href="https://www.coursera.org/account/accomplishments/verify/2GB7T8TE48YM" target="_blank" rel="noopener noreferrer" class="cert-card stagger-child"><div class="cert-logo blue"><i class="fa-brands fa-google"></i></div><div class="cert-info"><div class="cert-name">Google IT Support Professional</div><div class="cert-issuer">Google · Coursera · Verify ↗</div></div><i class="fa-solid fa-arrow-right cert-arrow"></i></a>
         <a href="https://www.linkedin.com/learning/certificates/3eea0d4010a1ec0c30581387a0d0dacdb82846d901bf9c176fce46b1623c6fd1" target="_blank" rel="noopener noreferrer" class="cert-card stagger-child"><div class="cert-logo ms"><i class="fa-brands fa-microsoft"></i></div><div class="cert-info"><div class="cert-name">Microsoft 365 Fundamentals</div><div class="cert-issuer">Microsoft · LinkedIn Learning · Verify ↗</div></div><i class="fa-solid fa-arrow-right cert-arrow"></i></a>
-        <a href="https://courses.cognitiveclass.ai/certificates/48f96badd2b34d3ea6a0a34c02ce4529" target="_blank" rel="noopener noreferrer" class="cert-card stagger-child"><div class="cert-logo ibm"><i class="fa-solid fa-database"></i></div><div class="cert-info"><div class="cert-name">Python 101 for Data Science</div><div class="cert-issuer">IBM · Cognitive Class · Issued Feb 2025 · Verify ↗</div></div><i class="fa-solid fa-arrow-right cert-arrow"></i></a>
-        <a href="https://www.credly.com/badges/916e326c-3fa9-4112-a0b1-f5c9e3af08b8/linked_in_profile" target="_blank" rel="noopener noreferrer" class="cert-card stagger-child"><div class="cert-logo python"><i class="fa-brands fa-python"></i></div><div class="cert-info"><div class="cert-name">Python for Data Science Badge</div><div class="cert-issuer">IBM · Credly · Verify ↗</div></div><i class="fa-solid fa-arrow-right cert-arrow"></i></a>
+        <a href="https://courses.cognitiveclass.ai/certificates/48f96badd2b34d3ea6a0a34c02ce4529" target="_blank" rel="noopener noreferrer" class="cert-card stagger-child"><div class="cert-logo ibm"><i class="fa-solid fa-database"></i></div><div class="cert-info"><div class="cert-name">Python 101 for Data Science</div><div class="cert-issuer">IBM · Cognitive Class · Verify ↗</div></div><i class="fa-solid fa-arrow-right cert-arrow"></i></a>
       </div>
     </div>
   </section>
@@ -602,9 +614,25 @@
       <h2 class="section-title reveal">Academic Background</h2>
       <div class="edu-list">
         <div class="edu-item stagger-child"><p class="edu-meta">Dec 2024 – Jun 2026</p><p class="edu-degree">Bachelor of Information Technology</p><p class="edu-school">CIHE Australia · Sydney, NSW</p></div>
-        <div class="edu-item stagger-child"><p class="edu-meta">Jan 2024 – Dec 2024</p><p class="edu-degree">Advanced Diploma of Information Technology</p><p class="edu-school">Queensford College · Sydney, NSW</p><span class="edu-score">⭐ Overall Score: A+</span></div>
-       
-        
+        <div class="edu-item stagger-child"><p class="edu-meta">Jan 2024 – Dec 2024</p><p class="edu-degree">Advanced Diploma of Information Technology</p><p class="edu-school">Queensford College · Sydney, NSW</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCES -->
+  <section class="section" id="references">
+    <div class="container">
+      <p class="section-label reveal">References</p>
+      <h2 class="section-title reveal">Who Can Vouch For Me</h2>
+      <div class="ref-list">
+        <div class="ref-item stagger-child">
+          <div class="ref-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <div>
+            <div class="ref-name">Sudan Maharjan</div>
+            <div class="ref-role">Director / IT Head, Newa IT Solutions</div>
+            <div class="ref-contact">+61 481 366 151 · sudan@newaitsolutions.com</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -640,7 +668,7 @@
             <button type="submit" class="btn-submit" id="submitBtn"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
           </form>
           <div class="form-success" id="formSuccess"><i class="fa-solid fa-circle-check"></i><p>Message sent successfully!</p><span>I'll get back to you within 24 hours.</span></div>
-          <div class="resume-strip"><div class="resume-file"><i class="fa-solid fa-file-pdf resume-file-icon"></i><div><div class="resume-file-name">AnishGiri_Resume..pdf</div><div class="resume-file-size">IT Support Engineer · Updated 2026</div></div></div><a href="Anish_Giri_Resume_IT%20support.pdf" download class="btn-download"><i class="fa-solid fa-download"></i> Download CV</a></div>
+          <div class="resume-strip"><div class="resume-file"><i class="fa-solid fa-file-pdf resume-file-icon"></i><div><div class="resume-file-name">AnishGiri_Resume_.pdf</div><div class="resume-file-size">IT Support Engineer · Updated 2026</div></div></div><a href="AnishGiri_Resume_.pdf" download class="btn-download"><i class="fa-solid fa-download"></i> Download CV</a></div>
         </div>
       </div>
     </div>
@@ -821,7 +849,7 @@
     fabBtn.addEventListener('click', () => panel.classList.toggle('open'));
     closeBtn.addEventListener('click', () => panel.classList.remove('open'));
 
-    // ── Full knowledge base about Anish — updated with Project 7 ────────────
+    // ── Full knowledge base about Anish — synced with latest resume ────────
     const ANISH_SYSTEM_PROMPT = `You are Anish Giri's personal AI assistant embedded on his portfolio website (anish.website).
 Your job is to answer questions about Anish in a friendly, professional, and accurate way — as if you know him personally.
 Keep answers concise (2–4 sentences max) unless the question requires more detail. Never make things up; if unsure, say so.
@@ -834,40 +862,46 @@ Keep answers concise (2–4 sentences max) unless the question requires more det
 - LinkedIn: linkedin.com/in/anish-giri-1b8530228
 - Status: Actively looking for IT Support Engineer roles in Sydney. Open to hybrid and on-site.
 
+=== PROFESSIONAL SUMMARY ===
+Recently graduated with a Bachelor of Information Technology, holding Google IT Support Professional and Microsoft 365 Fundamentals certifications. Experienced in Microsoft 365 administration, Active Directory, email security, and end-user support across Windows environments. Skilled at diagnosing and resolving hardware, software, and network issues with a structured, user-focused approach.
+
 === EDUCATION ===
-- Bachelor of IT at CIHE Australia (graduated June 2026)
-- Advanced Diploma of IT from Queensford College — 95% overall score
-- Diploma of IT from Queensford College
+- Bachelor of Information Technology, CIHE Australia, Sydney (Dec 2024 – Jun 2026)
+- Advanced Diploma of Information Technology, Queensford College, Sydney (Jan 2024 – Dec 2024)
 
 === CERTIFICATIONS ===
-- Google IT Support Professional Certificate (Coursera)
-- Microsoft 365 Fundamentals (LinkedIn Learning)
-- Python 101 for Data Science (IBM / Cognitive Class)
-- Python for Data Science Badge (IBM / Credly)
+- Google IT Support Professional Certificate
+- Microsoft 365 Fundamentals
+- Python 101 for Data Science
 
 === WORK EXPERIENCE ===
-- IT Support Intern at Newa IT Solutions, Sydney (March 2025 – March 2026)
-  • Level 1 helpdesk support (hardware, software, network issues)
-  • Active Directory & Microsoft 365 user account management
-  • Workstation and peripheral setup & configuration
-  • Communicated technical solutions clearly to non-technical users
+- IT Support Intern at Newa IT Solutions, Sydney (Mar 2025 – Ongoing)
+  • Resolved hardware, software, and network issues for end users, maintaining and extending relationships
+  • Managed Active Directory user accounts — provisioning, password resets, and group membership updates
+  • Administered Microsoft 365 environment: Exchange Online, Teams, SharePoint, and license management
+  • Configured and maintained workstations, peripherals, and network equipment from initial setup
+  • Logged and tracked support requests via FreshService, ensuring timely resolution within SLA targets
+  • Translated technical solutions into clear, non-technical language, ensuring a positive end-user experience
 
 === TECHNICAL SKILLS ===
-- OS: Windows 10/11, Windows Server 2019, Basic Linux (Ubuntu)
-- Cloud & M365: Microsoft 365 Business, Azure Fundamentals, AWS Basics, SharePoint, Teams Admin, Exchange Online, RBAC, Entra ID
-- Email Security & Identity: Mail Flow Rules, Anti-Spam Policies, MFA Enforcement, Microsoft Secure Score, Microsoft Defender, Quarantine Management, Password Protection, Message Trace
-- Networking: TCP/IP, Subnetting, DNS/DHCP, VLANs, NAT/PAT, Cisco IOS CLI, Wireshark, Wi-Fi troubleshooting
-- IT Support: FreshService ticketing, hardware troubleshooting, device setup, Active Directory
+- OS & Desktop: Windows 10/11, Windows Server 2019, Active Directory, Remote Desktop (RDP), Basic Linux (Ubuntu)
+- Microsoft 365: M365 Admin Center, Exchange Online, SharePoint, Teams, Entra ID / Azure AD, Shared Mailboxes, RBAC, MFA enforcement
+- Email Security: Mail flow rules, anti-spam policies, Microsoft Defender, Secure Score, quarantine management, message trace
+- IT Support & Helpdesk: FreshService ticketing, hardware setup & troubleshooting, device configuration, printer & peripheral support
+- Networking: TCP/IP, DNS, DHCP, subnetting, VLANs, NAT/PAT, Wi-Fi troubleshooting, Cisco IOS CLI, Wireshark
 - Dev/Scripting: Python, SQL/MySQL, JavaScript, HTML/CSS, Git/GitHub
 - Tools: Cisco Packet Tracer 8.2, Oracle VirtualBox, Figma, VS Code
 
 === PROJECTS (6 completed) ===
 1. Static Routing & WAN Fault Diagnosis — diagnosed live connectivity failure in multi-site WAN simulation (Cisco Packet Tracer, 4 routers)
-2. EIGRP Multi-Site WAN Network — designed 3-site corporate WAN with dynamic EIGRP routing and automatic route convergence
-3. HSRP Gateway Redundancy — dual-router failover with zero manual intervention when primary fails
+2. EIGRP Multi-Site WAN Network — built a 3-site corporate WAN with dynamic EIGRP routing, verified convergence via Cisco IOS
+3. HSRP Gateway Redundancy — dual-router failover with zero manual intervention when the primary fails
 4. M365 Groups, Teams & Access Control (RBAC) — Security Groups, Distribution Lists, M365 Groups with Teams workspaces, live permission boundary testing on real M365 tenant
-5. Shared Mailboxes, SharePoint & Resource Mailboxes — end-to-end email infrastructure, SharePoint team sites with permission tiers, room mailboxes on a live tenant
-6. Email Security & Identity Protection (Project 7, June 2026) — Hardened a live M365 tenant (IntelX800.onmicrosoft.com) by configuring mail flow rules (email disclaimer + sensitive keyword blocker with custom NDR), anti-spam policies with allow/block lists and quarantine management, per-user MFA enforcement via Microsoft Entra ID, custom password protection policies, and improved Microsoft Secure Score using Defender recommendations. Level: Intermediate–Advanced.
+5. Shared Mailboxes, SharePoint & Resource Mailboxes — end-to-end collaborative email infrastructure with tiered SharePoint permissions and resource mailboxes
+6. Email Security & Identity Protection — hardened a live M365 tenant with mail flow rules, anti-spam policies, and MFA enforcement, plus improved Microsoft Secure Score using Defender recommendations
+
+=== REFERENCES ===
+- Sudan Maharjan, Director / IT Head, Newa IT Solutions — +61 481 366 151, sudan@newaitsolutions.com
 
 === HOBBIES & PERSONAL INTERESTS ===
 - Loves playing football and going to the gym regularly
@@ -882,7 +916,7 @@ Keep answers concise (2–4 sentences max) unless the question requires more det
 - Approachable, patient, and easy to talk to
 
 === LEARNING & GROWTH MINDSET ===
-- Describes himself as a "desperate" (passionate) and quick learner
+- Describes himself as a passionate and quick learner
 - Primarily self-taught through hands-on practice — learns best by actually doing things
 - Also uses YouTube and online resources to supplement learning
 - Always eager to pick up new technologies and tools on the job
